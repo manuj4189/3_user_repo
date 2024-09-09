@@ -1,0 +1,56 @@
+package in.ashokit.dto;
+
+public class ResetpwdFormDTO {
+	private String email;
+	
+	private String pwd;
+	
+	private String oldpwd;
+	
+	private String newpwd;
+	
+	private String confirmpwd;
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getPwd() {
+		return pwd;
+	}
+
+	public void setPwd(String pwd) {
+		this.pwd = pwd;
+	}
+
+	public String getOldpwd() {
+		return oldpwd;
+	}
+
+	public void setOldpwd(String oldpwd) {
+		this.oldpwd = oldpwd;
+	}
+
+	public String getNewpwd() {
+		return newpwd;
+	}
+
+	public void setNewpwd(String newpwd) {
+		this.newpwd = newpwd;
+	}
+
+	public String getConfirmpwd() {
+		return confirmpwd;
+	}
+
+	public void setConfirmpwd(String confirmpwd) {
+		this.confirmpwd = confirmpwd;
+	}
+	
+	
+
+}
