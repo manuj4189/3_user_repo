@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -32,8 +33,8 @@ public class UserController {
 	@GetMapping("/register")
 	public String loadRegisterpage(Model model) {
 		
-		Map<Integer,String> countriesmap=userService.getCountries();
-		model.addAttribute("countries", countriesmap);
+		Map<Integer,String> countriesMap=userService.getCountries();
+		model.addAttribute("countries", countriesMap);
 		
 		RegisterFormDTO registerFormDTO=new RegisterFormDTO();
 		model.addAttribute("registerForm", registerFormDTO);
@@ -49,6 +50,8 @@ public class UserController {
 		public Map<Integer,String> getStates(@PathVariable Integer countryId) {
 			
 			Map<Integer,String> statesMap=userService.getStates(countryId);
+			System.out.println(statesMap);
+		
 			//model.addAttribute("states", statesMap);
 			return statesMap;
 			
@@ -72,12 +75,13 @@ public class UserController {
 			boolean status =userService.duplicateEmailCheck(registerFormDTO.getEmail());
 			if(status) {
 				model.addAttribute("emsg","Duplicate Email Found");
+				model.addAttribute("loginForm",new LoginFormDTO());
 			}else {
 				boolean saveUser=userService.saveUser(registerFormDTO);
 				if(saveUser) {
 					//user saved
 					
-					model.addAttribute("smsg","Registration Succeful,pl check your email");
+					model.addAttribute("smsg","Registration Succeful,plz check your email");
 				}
 				else {
 					//failed to save
@@ -85,7 +89,7 @@ public class UserController {
 					
 				}
 			}
-			model.addAttribute("countries",userService.getCountries());
+			//model.addAttribute("countries",userService.getCountries());
 			return "register";
 			
 		}
@@ -98,7 +102,9 @@ public class UserController {
 		}
 			
 		@PostMapping("/login")
-			public String handleUserLogin(LoginFormDTO loginFormDTO,Model model) {
+		
+			public String handleUserLogin(@ModelAttribute("loginForm") LoginFormDTO loginFormDTO,Model model) {
+			
 			
 			UserDTO userDTO=userService.login(loginFormDTO);
 			if(userDTO==null) {

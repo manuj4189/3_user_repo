@@ -12,7 +12,7 @@ import jakarta.persistence.Table;
 public class CountryEntity {
 	
 	 @Id
-	 @GeneratedValue(strategy = GenerationType.IDENTITY)
+	 @GeneratedValue(strategy = GenerationType.AUTO)
 	 @Column(name="country_id")
 	private Integer countryId;
 	 

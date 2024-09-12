@@ -13,11 +13,11 @@ public class CityEntity {
 	
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="city_id")
 	private Integer cityId;
 	
-	@Column(name="city_aame")
+	@Column(name="city_name")
 	private String cityName;
 	
 	@Column(name="state_id")
