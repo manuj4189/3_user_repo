@@ -3,8 +3,6 @@ package in.ashokit.dto;
 public class ResetpwdFormDTO {
 	private String email;
 	
-	private String pwd;
-	
 	private String oldpwd;
 	
 	private String newpwd;
@@ -19,13 +17,7 @@ public class ResetpwdFormDTO {
 		this.email = email;
 	}
 
-	public String getPwd() {
-		return pwd;
-	}
-
-	public void setPwd(String pwd) {
-		this.pwd = pwd;
-	}
+	
 
 	public String getOldpwd() {
 		return oldpwd;

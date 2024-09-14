@@ -136,10 +136,12 @@ public class UserController {
 		}
 		
 		@GetMapping("/reset-pwd-page")
-		public String loadResetPwdPage(@RequestParam("email") String email,Model model) {
+		public String loadResetPwdPage(@RequestParam String email,Model model) {
 			
 			ResetpwdFormDTO resetpwdFormDTO=new ResetpwdFormDTO();
 			resetpwdFormDTO.setEmail(email);
+			
+			model.addAttribute("resetPwd",resetpwdFormDTO);
 			
 			return "resetPwd";
 		}
